@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: kanai
+  password: kanai
+  host: localhost
+
+
+development:
+  <<: *default
+  database: hello_development
+
+test:
+  <<: *default
+  database: hello_test
+
+production:
+  <<: *default
+  database: hello_production
+  username: hello
+  password: <%= ENV['HELLO_DATABASE_PASSWORD'] %>
